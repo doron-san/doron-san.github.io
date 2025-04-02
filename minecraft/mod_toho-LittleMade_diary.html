@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MOD_東方リトルメイド_日誌</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>MOD_東方リトルメイド_日誌<br>
+<a href="mod_toho-LittleMade_main.html">メインへ</a></p>
+<p>INDEX</p>
+<ul>
+<li><a href="#20250328%E9%87%91">2025/03/28(金)</a></li>
+<li><a href="#20250327%E6%9C%A8">2025/03/27(木)</a></li>
+<li><a href="#20250326%E6%B0%B4">2025/03/26(水)</a></li>
+<li><a href="#20250325%E7%81%AB">2025/03/25(火)</a></li>
+<li><a href="#20250324%E6%9C%88">2025/03/24(月)</a></li>
+<li><a href="#20250323%E6%97%A5">2025/03/23(日)</a></li>
+<li><a href="#20250320%E6%9C%A8">2025/03/20(木)</a></li>
+</ul>
+<h1 id="20250328%E9%87%91">2025/03/28(金)</h1>
+<ul>
+<li>10:30 - <a href="MOD_%E6%9D%B1%E6%96%B9%E3%83%AA%E3%83%88%E3%83%AB%E3%83%A1%E3%82%A4%E3%83%89_%E8%A6%9A%E3%81%88%E3%82%84%E3%81%99%E3%81%84%E5%B9%BB%E6%83%B3%E5%8D%BF.md">覚えやすい幻想卿</a>のページを新設した。</li>
+<li>上記に覚えやすい幻想卿の内容を文字起こししたので、それにそって試してみることでノウハウを貯めて行く様にしよう。</li>
+</ul>
+<h1 id="20250327%E6%9C%A8">2025/03/27(木)</h1>
+<ul>
+<li>寝たメイドを<code>魂の宿紙</code>で吸い込めるか
+<ul>
+<li>OK。場所が微妙だったがしゃがみながら右クリックで吸い込めた。</li>
+</ul>
+</li>
+</ul>
+<h1 id="20250326%E6%B0%B4">2025/03/26(水)</h1>
+<ul>
+<li>紺珠の薬のレシピ
+<ul>
+<li>エンダーパールx1</li>
+<li>エメラルドx1・・・とりあえず村へ。
+-&gt; 紙とジャガイモだけで75個のエメラルドGet！</li>
+<li>青緑色の染料x4・・・サボテンとラピスラズリから出来る染料を混ぜるらしい。</li>
+</ul>
+</li>
+</ul>
+<h1 id="20250325%E7%81%AB">2025/03/25(火)</h1>
+<ul>
+<li>ピンクの羊毛x3が目標。メイドのベッド用だ。</li>
+<li>赤い花が2つしかゲット出来ずに染料も・・・４つ出来た！</li>
+<li>もう足りるのだが、折角なのでピンクの羊を４匹に増やした。・・・でベッド完成！</li>
+<li><a href="https://www.youtube.com/watch?v=TurD1SjYXHs">一気見！東方メイドとハーレム生活！1～20話！総集編！
+</a>これ、結<font color="red">構使える情報</font>が散りばめられてるかも。</li>
+<li>紺珠の薬(6回身代わり)を作ってからメイドと冒険に出かけたい！(死ぬと好感度が下がるらしいので、紺珠の薬で死亡回避出来れば下がらないと見た。)</li>
+<li>紺珠の薬のレシピ
+<ul>
+<li>エンダーパールx1</li>
+<li>エメラルドx1・・・とりあえず村へ。</li>
+<li>青緑色の染料x4・・・サボテンとラピスラズリから出来る染料を混ぜるらしい。</li>
+</ul>
+</li>
+</ul>
+<h1 id="20250324%E6%9C%88">2025/03/24(月)</h1>
+<ul>
+<li>ダイヤとって飛騨肥田杖をつくって、鳥居を開放した。</li>
+<li>でっかいリュックを作るのにダイヤと黒羊毛が必要
+ダイヤを結構集めたところで、マグマで死亡。Functionマイニングの欠点が原因。
+死亡時のインベントリ保持なのに上記でダイヤを全部ロスト・・・なんでかな？</li>
+<li>気を取り直してダイヤを集めた。</li>
+<li>羊毛は赤羊の柵を分けてイカ墨つかって黒羊にした・・・しかし必要なのは灰色の羊毛だった・・・</li>
+<li>チェストに骨がたままたあったので、白染料。イカ墨の黒染料と混ぜてなんとかOK。</li>
+<li>音声の切り替えが分からなかったが、なんとか判明・・・右上にでっかいボタンがあった！</li>
+</ul>
+<h1 id="20250323%E6%97%A5">2025/03/23(日)</h1>
+<ul>
+<li>
+<p>敵MOBばノーマルゾンビでテスト(たまに子ゾンビあり)
+紺珠の薬(6回身代わり)・・・をセットし装備無しでテスト。1つと2/6くらい消費した。</p>
+<table>
+<thead>
+<tr>
+<th>人</th>
+<th>武器</th>
+<th>耐久回数</th>
+<th>ゾンビを倒すまでの回数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自分</td>
+<td>石の剣</td>
+<td>130回</td>
+<td>5回殴り。なぜ？</td>
+</tr>
+<tr>
+<td>メイド</td>
+<td>石の剣</td>
+<td>130回</td>
+<td>4回殴り</td>
+</tr>
+</tbody>
+</table>
+<p>上記は好感度をまったく上げずにテストしたのだが、なぜかメイドの方が攻撃力が高い結果だった・・・何故？</p>
+</li>
+<li>
+<p>小麦畑 9 x 9 -1 で10倍速(設定値30)にし、10分間で204つ採取した。</p>
+</li>
+<li>
+<p>継続で30分測ったら434つ採取した。1列414個分なので、30分で1列強、3時間でラージチェストが溢れる計算だ。</p>
+</li>
+<li>
+<p>上記と同じ条件でジャガイモもテスト。10分で716個。計算上2時間半程度でラージチェストから溢れる。</p>
+</li>
+<li>
+<p>農業可能範囲は中心から半径11マスまで。円献上の範囲だった。(2025/3/23検証)</p>
+</li>
+<li>
+<p>「八雲紫のスキマ」でのチェストを使う範囲は中心から半径23マス。24マスからNG。
+ただしこれは中心からの距離ではなく、よりチェストに近くに寄ってからの距離の様な気がする・・・かも？</p>
+</li>
+</ul>
+<h1 id="20250320%E6%9C%A8">2025/03/20(木)</h1>
+<ul>
+<li>1.12.2に東方リトルメイドをインストールしてみた</li>
+<li>1.12.1でしばらくやってみたが、バージョンが古すぎて、マウス挙動も悪すぎなので中断</li>
+<li>1.18.2でも1.12.1に倣って前提MODのMCMultiPart,Patchouli,Obfuscateからインストール可能なものを入れたら何とか使えそう。</li>
+<li>1.18.2に関しては↓のリンクが詳しく解説している。
+<a href="https://ore-game.com/minecraft/post/touhou-summon/">【東方リトルメイド】メイドを召喚する方法</a></li>
+</ul>
+
+</body>
+</html>
